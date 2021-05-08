@@ -6,7 +6,7 @@ function checkPaths(paths) {
 
     for (let path in paths) {
         if (paths[path] !== undefined) {
-            errMsgTmps[path] = (fileExists(paths[path]));
+            errMsgTmps[path] = (fileExists(paths[path], path));
         }
     }
     genErr(errMsgTmps);
