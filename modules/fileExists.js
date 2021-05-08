@@ -1,12 +1,25 @@
-const fs = require('fs');
+const { existsSync, accessSync, constants } = require('fs');
 
-function fileExists(path) {
-    if (fs.existsSync(path)) {
-        return 'succes';
+
+function fileExists(path, ft) {
+    if (!existsSync(path)) {
+        return 'exists error';
+    }
+    else if (ft === 'input') {
+        try {
+            accessSync(path, constants.R_OK);
+        } catch (error) {
+            return 'access error';
+        }
     }
     else {
-        return 'error';
+        try {
+            accessSync(path, constants.W_OK);
+        } catch (error) {
+            return 'access error';
+        }
     }
+    return 'success';
 
 }
 
