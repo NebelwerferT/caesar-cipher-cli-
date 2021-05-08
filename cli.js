@@ -1,6 +1,7 @@
 const program = require('commander');
 
 const { checkOptions } = require('./modules/checkOptions.js');
+const { checkPaths } = require('./modules/checkPaths.js');
 
 program
     .configureOutput({
@@ -18,3 +19,5 @@ program
 const options = program.opts();
 
 checkOptions(options);
+
+const paths = checkPaths({ input: options.input, output: options.output });
