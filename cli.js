@@ -1,5 +1,7 @@
 const program = require('commander');
 
+const { checkOptions } = require('./modules/checkOptions.js');
+
 program
     .configureOutput({
         writeErr: (str) => {
@@ -12,3 +14,7 @@ program
     .option('-o, --output <path>', 'an output file')
     .option('-a, --action <type>', 'an action encode/decode')
     .parse(process.argv);
+
+const options = program.opts();
+
+checkOptions(options);
