@@ -2,6 +2,7 @@ const program = require('commander');
 
 const { checkOptions } = require('./modules/checkOptions.js');
 const { checkPaths } = require('./modules/checkPaths.js');
+const { rtw } = require('./modules/rtw.js');
 
 program
     .configureOutput({
@@ -21,3 +22,5 @@ const options = program.opts();
 checkOptions(options);
 
 const paths = checkPaths({ input: options.input, output: options.output });
+
+rtw(options.action, options.shift, paths.input, paths.output);
