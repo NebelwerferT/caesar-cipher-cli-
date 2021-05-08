@@ -1,14 +1,4 @@
-const fs = require('fs');
-
-function fileExists(path) {
-    if (fs.existsSync(path)) {
-        return 'succes';
-    }
-    else {
-        return 'error';
-    }
-
-}
+const { fileExists } = require('./fileExists.js');
 
 function genErr(errMsgTmps) {
     if (errMsgTmps.input === 'error' && errMsgTmps.output === 'error') {
