@@ -9,7 +9,7 @@ function rtw(action, shift, inputPath, outputPath) {
     transform.shift = +shift;
     pipeline(
         inputPath ? fs.createReadStream(inputPath, 'utf-8') : process.stdin,
-        transform.once('data', function () { if (outputPath) { this.write(os.EOL); } }),
+        transform.once('data', function () { if (inputPath && outputPath) { this.write(os.EOL); } }),
         outputPath ? fs.createWriteStream(outputPath, { 'flags': 'a' }) : process.stdout,
         (error) => {
             if (error) {
