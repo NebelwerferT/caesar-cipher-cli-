@@ -1,4 +1,5 @@
 function replacer(action, shift, match) {
+    shift = shift % 26;
     if (action === 'encode' && shift >= 0 || action === 'decode' && shift <= 0) {
         shift = Math.abs(shift);
         if (match.toLowerCase().charCodeAt(0) + shift > 'z'.charCodeAt(0)) {
